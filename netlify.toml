@@ -5,6 +5,11 @@
 [build.environment]
   NODE_VERSION = "20.9.0"
 
+[[headers]]
+  for = "/babel-polyfill-6.26.0.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -16,8 +21,6 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Убираем X-Frame-Options для работы в Telegram Web App
-    # X-Frame-Options = "DENY"
 
 [[headers]]
   for = "/assets/*"
