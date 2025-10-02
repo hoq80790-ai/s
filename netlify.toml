@@ -5,11 +5,19 @@
 [build.environment]
   NODE_VERSION = "20.9.0"
 
+# Специальное правило для babel-polyfill - должно быть ПЕРЕД общим redirect
 [[headers]]
   for = "/babel-polyfill-6.26.0.js"
   [headers.values]
     Content-Type = "application/javascript"
 
+# Исключаем babel-polyfill из общего redirect
+[[redirects]]
+  from = "/babel-polyfill-6.26.0.js"
+  to = "/babel-polyfill-6.26.0.js"
+  status = 200
+
+# Общий redirect для всех остальных файлов
 [[redirects]]
   from = "/*"
   to = "/index.html"
